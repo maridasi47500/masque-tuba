@@ -94,6 +94,12 @@ class Route():
         print("route params")
         self.render_figure.set_param("user",User().getbyid(myparam["id"]))
         return self.render_figure.render_figure("user/edituser.html")
+    def seevideo(self,params={}):
+        getparams=("id",)
+        print("get param, action see my new",getparams)
+        myparam=self.get_this_route_param(getparams,params)
+        self.render_figure.set_param("video",self.db.Video.getbyid(myparam["id"]))
+        return self.render_figure.render_figure("welcome/video.html")
     def seeuser(self,params={}):
         getparams=("id",)
         print("get param, action see my new",getparams)
@@ -227,6 +233,7 @@ class Route():
 
             '^/save_user$':self.save_user,
             '^/update_user$':self.update_user,
+            "^/video/([0-9]+)$":self.seevideo,
             "^/seeuser/([0-9]+)$":self.seeuser,
             "^/edituser/([0-9]+)$":self.edit_user,
             "^/deleteuser/([0-9]+)$":self.delete_user,

@@ -1,0 +1,5 @@
+<div>
+	<%video=params["video"]%>
+	<p><%=video["name"]%></p>
+		<hr>
+</div>
