@@ -10,7 +10,9 @@ class Video(Model):
         self.cur=self.con.cursor()
         self.cur.execute("""create table if not exists video(
         id integer primary key autoincrement,
-        name text,
+        heure text,
+            date text,
+            name text,
             filename text
     ,
     Timestamp DATETIME DEFAULT CURRENT_TIMESTAMP                );""")
@@ -51,7 +53,7 @@ class Video(Model):
         print(myhash,myhash.keys())
         myid=None
         try:
-          self.cur.execute("insert into video (name,filename) values (:name,:filename)",myhash)
+          self.cur.execute("insert into video (heure,date,name,filename) values (:heure,:date,:name,:filename)",myhash)
           self.con.commit()
           myid=str(self.cur.lastrowid)
         except Exception as e:

@@ -4,5 +4,7 @@ for y in "mesdeuxiemefilm Mespremiersfilms00100001 mestroisiemefilm monquatrieme
     for x in os.listdir("~/Bureau/sousleau camra wifi/"+y+"/"):
         if "VID" in x:
             desc=x[19:-4]
+            heure=x[13:18]
+            date=x[4:11]
             myfile=x
-            Video().create({"name":desc, "filename":myfile})
+            Video().create({"heure":heure,"date":date,"name":desc, "filename":myfile})
